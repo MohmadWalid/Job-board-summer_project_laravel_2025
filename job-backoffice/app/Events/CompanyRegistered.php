@@ -2,6 +2,8 @@
 
 namespace App\Events;
 
+use App\Models\Company;
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -17,20 +19,7 @@ class CompanyRegistered
     /**
      * Create a new event instance.
      */
-    public function __construct()
+    public function __construct(public Company $company, public User $owner)
     {
-        //
-    }
-
-    /**
-     * Get the channels the event should broadcast on.
-     *
-     * @return array<int, Channel>
-     */
-    public function broadcastOn(): array
-    {
-        return [
-            new PrivateChannel('channel-name'),
-        ];
     }
 }

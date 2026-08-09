@@ -8,12 +8,15 @@ use App\Models\Company;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Events\CompanyRegistered;
 
 class CompanyService
 {
+
     public function createCompanyWithOwner(CreateCompanyDTO $companyDTO, CreateUserDTO $ownerDTO): void
     {
-        DB::transaction(function () use ($companyDTO, $ownerDTO) {
+        [$company, $owner] = DB::transaction(function () use ($companyDTO, $ownerDTO) {
+
             // Create owner
             $owner = User::create([
                 'name' => $ownerDTO->name,
@@ -23,13 +26,17 @@ class CompanyService
             ]);
 
             // Create company and link it to the new owner
-            Company::create([
+            $company = Company::create([
                 'name' => $companyDTO->name,
                 'address' => $companyDTO->address,
                 'industry' => $companyDTO->industry,
                 'website' => $companyDTO->website,
                 'owner_id' => $owner->id,
             ]);
+
+            return [$company, $owner];
         });
+
+        event(new CompanyRegistered($company, $owner));
     }
 }
