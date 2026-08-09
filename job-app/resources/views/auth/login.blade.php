@@ -64,5 +64,42 @@
                 </div>
             </div>
         </form>
+
+        <!-- Demo Credentials -->
+        <div class="mt-8 rounded-xl border border-indigo-500/20 bg-indigo-950/40 p-4 backdrop-blur-sm">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="text-lg">🔑</span>
+                <h2 class="text-sm font-semibold text-indigo-400 uppercase tracking-wide">Demo Credentials</h2>
+            </div>
+            <p class="text-xs text-gray-500 mb-3">Use the following pre-seeded account to test the platform:</p>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs">
+                    <thead>
+                        <tr class="border-b border-indigo-500/20">
+                            <th class="text-left py-1.5 pr-3 font-semibold text-indigo-400">Role</th>
+                            <th class="text-left py-1.5 pr-3 font-semibold text-indigo-400">Email</th>
+                            <th class="text-left py-1.5 pr-3 font-semibold text-indigo-400">Password</th>
+                            <th class="text-left py-1.5 font-semibold text-indigo-400">App</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="py-1.5 pr-3">
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-900/50 text-emerald-400 border border-emerald-500/30">Job Seeker</span>
+                            </td>
+                            <td class="py-1.5 pr-3">
+                                <button type="button"
+                                    onclick="document.getElementById('email').value='idietrich@example.com'"
+                                    class="font-mono text-indigo-400 hover:text-indigo-200 hover:underline cursor-pointer transition-colors"
+                                    title="Click to fill email">idietrich@example.com</button>
+                            </td>
+                            <td class="py-1.5 pr-3 font-mono text-gray-400">12345678</td>
+                            <td class="py-1.5 text-gray-500">Job App</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xs text-indigo-500/60 mt-2 italic">💡 Click the email to auto-fill the login form.</p>
+        </div>
     </div>
 </x-guest-layout>
